@@ -30,7 +30,7 @@ header {
   height: 100%;
   object-fit: cover;
 }
-/* .tear-effect {
+.tear-effect {
   background-image: url(./assets/images/tear-d431548c90905ad757632e4c3075d9473e38c7c6642721efeae9413afb9387a2.svg);
   height: 100%;
   width: 100%;
@@ -41,7 +41,8 @@ header {
   object-fit: contain;
   z-index: 0;
   overflow: hidden;
-} */
+  clip-path: polygon(30% 0%, 30% 26.5%, 100% 26.5%, 100% 0%);
+}
 .content {
   margin-top: 50px;
   z-index: 15;
