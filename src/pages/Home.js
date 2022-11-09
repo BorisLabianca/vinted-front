@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import banner from "../assets/images/banner-wide-b31e1e250bf33255b4014ead6799dad6546dcc18dedad6925ba79a616cb676e6.jpg";
+import HotOffer from "../components/HotOffer";
 
 const Home = () => {
   const [data, setData] = useState();
@@ -12,7 +13,7 @@ const Home = () => {
         const response = await axios.get(
           "https://lereacteur-vinted-api.herokuapp.com/offers"
         );
-        console.log(response.data);
+        // console.log(response.data);
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -25,7 +26,7 @@ const Home = () => {
   return isLoading ? (
     <span>En cours de chargement...</span>
   ) : (
-    <div>
+    <main>
       <div className="banner">
         <img src={banner} alt="banner" />
         <div className="tear-effect"></div>
@@ -36,9 +37,22 @@ const Home = () => {
             <span>Articles populaires</span>
             <button>Voir tout</button>
           </div>
+          <div className="offers-display">
+            {data.offers.map((offer) => {
+              return (
+                <HotOffer
+                  key={offer._id}
+                  image={offer.product_image.secure_url}
+                  price={offer.product_price}
+                  details={offer.product_details}
+                  id={offer._id}
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 export default Home;

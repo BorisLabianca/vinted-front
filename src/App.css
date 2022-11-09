@@ -1,6 +1,13 @@
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
 .container {
   max-width: 1280px;
   margin: 0 auto;
+}
+header {
+  border-bottom: 1px solid lightgray;
 }
 .header-top {
   display: flex;
@@ -43,4 +50,159 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.offers-display {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.individual-offer {
+  display: flex;
+  flex-direction: column;
+  width: calc((100% / 6) - 10px);
+  height: 393px;
+}
+.individual-offer .link-to-offer {
+  width: 100%;
+  height: 75%;
+}
+.individual-offer .link-to-offer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  overflow: hidden;
+}
+.individual-offer .offer-info {
+  padding: 5px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 5px;
+}
+.individual-offer .subpic {
+  display: flex;
+  justify-content: space-between;
+}
+.individual-offer .subpic .price-info {
+  display: flex;
+  gap: 5px;
+}
+.individual-offer .subpic .popularity {
+  display: flex;
+  gap: 5px;
+}
+.individual-offer .details {
+  display: flex;
+  flex-direction: column;
+}
+.offer-main {
+  background-color: #f2f2f2;
+  height: 95vh;
+}
+.product {
+  padding-top: 30px;
+  height: 624px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+.product-pics {
+  display: flex;
+  margin-right: 20px;
+  flex: 8;
+}
+.product-pics .main-pic {
+  height: 100%;
+  width: 50%;
+  margin-right: 3px;
+}
+.product-pics .main-pic img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.product-pics .picture-mosaic {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+}
+.product-pics .picture-mosaic .additional-picture {
+  height: calc((100% - 3px) / 2);
+  width: calc((100% - 3px) / 2);
+}
+.product-pics .picture-mosaic .additional-picture img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 5px;
+}
+.full-product-details {
+  height: 100%;
+  background-color: white;
+  border-radius: 5px;
+  flex: 3;
+  box-sizing: border-box;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.offer-page-price {
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 700;
+}
+.product-specs {
+  padding: 0 0 50px;
+  border-bottom: 1px solid lightgray;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.indiv-spec {
+  display: flex;
+  gap: 30px;
+}
+.indiv-spec .key {
+  width: 35%;
+}
+.product-name {
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+.prod-description {
+  margin-bottom: 20px;
+}
+.owner {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.user-initial {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-color: blueviolet;
+}
+.buy-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.buy-btn button {
+  background-color: #09b0ba;
+  width: 100%;
+  color: white;
+  border: none;
+  height: 35px;
+  border-radius: 5px;
+  font-size: 16px;
 }
