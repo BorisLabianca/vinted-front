@@ -9,45 +9,42 @@ const Signup = ({ handleToken }) => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const [emailExists, setEmailExists] = useState(false);
-
-  return (
-    <div>
-      <h1>S'inscrire</h1>
-      <form
-        onSubmit={(event) => {
-          event.preventDefault();
-          if (password.length < 8) {
-            alert("Votre mot de passe est trop court.");
-          } else if (!email) {
-            alert("Veuillez entrer une adresse e-mail.");
-          } else if (!username) {
-            alert("Veuillez entrer un nom d'utilisateur.");
-          } else {
-            const fetchData = async () => {
-              try {
-                const response = await axios.post(
-                  "https://lereacteur-vinted-api.herokuapp.com/user/signup",
-                  { username: username, email: email, password: password }
-                );
-                console.log(response.data);
-                const token = response.data.token;
-                handleToken(token);
-                navigate("/");
-              } catch (error) {
-                console.log(error.response);
-                if (
-                  error.response.data.message ===
-                  "This email already has an account"
-                ) {
-                  setEmailExists(true);
-                }
-                //   console.log(error.response.data.message);
-              }
-            };
-            fetchData();
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (password.length < 8) {
+      alert("Votre mot de passe est trop court.");
+    } else if (!email) {
+      alert("Veuillez entrer une adresse e-mail.");
+    } else if (!username) {
+      alert("Veuillez entrer un nom d'utilisateur.");
+    } else {
+      const fetchData = async () => {
+        try {
+          const response = await axios.post(
+            "https://lereacteur-vinted-api.herokuapp.com/user/signup",
+            { username: username, email: email, password: password }
+          );
+          console.log(response.data);
+          const token = response.data.token;
+          handleToken(token);
+          navigate("/");
+        } catch (error) {
+          console.log(error.response);
+          if (
+            error.response.data.message === "This email already has an account"
+          ) {
+            setEmailExists(true);
           }
-        }}
-      >
+          //   console.log(error.response.data.message);
+        }
+      };
+      fetchData();
+    }
+  };
+  return (
+    <div className="signup-container">
+      <h1>S'inscrire</h1>
+      <form onSubmit={handleSubmit} className="signup-form">
         <input
           type="text"
           placeholder="Nom d'utilisateur"
@@ -55,6 +52,7 @@ const Signup = ({ handleToken }) => {
           onChange={(event) => {
             setUserName(event.target.value);
           }}
+          className="necessary"
         />
         <input
           type="email"
@@ -63,6 +61,7 @@ const Signup = ({ handleToken }) => {
           onChange={(event) => {
             setEmail(event.target.value);
           }}
+          className="necessary"
         />
         {emailExists ? (
           <p className="email-exists">Cet email a déjà un compte chez nous !</p>
@@ -74,23 +73,28 @@ const Signup = ({ handleToken }) => {
           onChange={(event) => {
             setPassword(event.target.value);
           }}
+          className="necessary"
         />
-        {password.length < 8 ? (
+        {password === "" ? null : password.length < 8 ? (
           <div className="password-too-short">
             Votre mot de passe doit comporter au moins 8 caractères.
           </div>
         ) : null}
+        <div className="checkbox-div">
+          <input type="checkbox" />
+          <label>S'inscrire à notre newsletter</label>
+          <p>
+            En m'inscrivant je confirme avoir lu et accepté les Termes &
+            Conditions et Politique de Confidentialité de Vinted. Je confirme
+            avoir au moins 18 ans.
+          </p>
+        </div>
 
-        <input type="checkbox" />
-        <label>S'inscrire à notre newsletter</label>
-        <p>
-          En m'inscrivant je confirme avoir lu et accepté les Termes &
-          Conditions et Politique de Confidentialité de Vinted. Je confirme
-          avoir au moins 18 ans.
-        </p>
-        <input type="submit" value="S'inscrire" />
+        <input type="submit" value="S'inscrire" className="signup-submit-btn" />
       </form>
-      <Link to="/login">Tu as déjà un compte ? Connecte-toi !</Link>
+      <Link to="/login" className="redirect-to-login-signup">
+        Tu as déjà un compte ? Connecte-toi !
+      </Link>
     </div>
   );
 };

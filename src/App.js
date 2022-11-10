@@ -14,8 +14,12 @@ import Header from "./components/Header";
 
 // import de fontawesome
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faCircleInfo, faHeart } from "@fortawesome/free-solid-svg-icons";
-library.add(faCircleInfo, faHeart);
+import {
+  faCircleInfo,
+  faHeart,
+  faMagnifyingGlass,
+} from "@fortawesome/free-solid-svg-icons";
+library.add(faCircleInfo, faHeart, faMagnifyingGlass);
 
 function App() {
   const [token, setToken] = useState(Cookies.get("token") || null);

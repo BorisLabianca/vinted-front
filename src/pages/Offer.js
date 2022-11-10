@@ -13,7 +13,7 @@ const Offer = () => {
         const response = await axios.get(
           `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
         );
-        console.log(response.data);
+        // console.log(response.data);
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -49,44 +49,51 @@ const Offer = () => {
             </div>
             <div className="product-specs">
               {data.product_details.map((detail, index) => {
-                if (detail.MARQUE) {
-                  return (
-                    <div key={index} className="indiv-spec">
-                      <div className="key">MARQUE</div>
-                      <div>{detail.MARQUE}</div>
-                    </div>
-                  );
-                } else if (detail.TAILLE) {
-                  return (
-                    <div key={index} className="indiv-spec">
-                      <div className="key">TAILLE</div>
-                      <div>{detail.TAILLE}</div>
-                    </div>
-                  );
-                } else if (detail.ÉTAT) {
-                  return (
-                    <div key={index} className="indiv-spec">
-                      <div className="key">ÉTAT</div>
-                      <div>{detail.ÉTAT}</div>
-                    </div>
-                  );
-                } else if (detail.COULEUR) {
-                  return (
-                    <div key={index} className="indiv-spec">
-                      <div className="key">COULEUR</div>
-                      <div>{detail.COULEUR}</div>
-                    </div>
-                  );
-                } else if (detail.EMPLACEMENT) {
-                  return (
-                    <div key={index} className="indiv-spec">
-                      <div className="key">EMPLACEMENT</div>
-                      <div>{detail.EMPLACEMENT}</div>
-                    </div>
-                  );
-                } else {
-                  return null;
-                }
+                const objectKey = Object.keys(detail)[0];
+                return (
+                  <div key={index} className="indiv-spec">
+                    <div className="key">{objectKey}</div>
+                    <div>{detail[objectKey]}</div>
+                  </div>
+                );
+                //   if (detail.MARQUE) {
+                //     return (
+                //       <div key={index} className="indiv-spec">
+                //         <div className="key">MARQUE</div>
+                //         <div>{detail.MARQUE}</div>
+                //       </div>
+                //     );
+                //   } else if (detail.TAILLE) {
+                //     return (
+                //       <div key={index} className="indiv-spec">
+                //         <div className="key">TAILLE</div>
+                //         <div>{detail.TAILLE}</div>
+                //       </div>
+                //     );
+                //   } else if (detail.ÉTAT) {
+                //     return (
+                //       <div key={index} className="indiv-spec">
+                //         <div className="key">ÉTAT</div>
+                //         <div>{detail.ÉTAT}</div>
+                //       </div>
+                //     );
+                //   } else if (detail.COULEUR) {
+                //     return (
+                //       <div key={index} className="indiv-spec">
+                //         <div className="key">COULEUR</div>
+                //         <div>{detail.COULEUR}</div>
+                //       </div>
+                //     );
+                //   } else if (detail.EMPLACEMENT) {
+                //     return (
+                //       <div key={index} className="indiv-spec">
+                //         <div className="key">EMPLACEMENT</div>
+                //         <div>{detail.EMPLACEMENT}</div>
+                //       </div>
+                //     );
+                //   } else {
+                //     return null;
+                //   }
               })}
             </div>
             <div className="name-desc-user">

@@ -39,15 +39,7 @@ const Home = () => {
           </div>
           <div className="offers-display">
             {data.offers.map((offer) => {
-              return (
-                <HotOffer
-                  key={offer._id}
-                  image={offer.product_image.secure_url}
-                  price={offer.product_price}
-                  details={offer.product_details}
-                  id={offer._id}
-                />
-              );
+              return <HotOffer key={offer._id} offer={offer} />;
             })}
           </div>
         </div>
