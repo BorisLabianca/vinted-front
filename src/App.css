@@ -213,3 +213,16 @@ header {
   border-radius: 5px;
   font-size: 16px;
 }
+
+.email-exists {
+  color: red;
+  font-size: 12px;
+}
+.password-too-short {
+  color: red;
+  font-size: 12px;
+}
+.unauthorized {
+  color: red;
+  font-size: 12px;
+}

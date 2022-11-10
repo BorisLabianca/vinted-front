@@ -1,7 +1,7 @@
 import logo from "../assets/images/logo.svg";
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ token, handleToken }) => {
   return (
     <header>
       <div className="container">
@@ -21,12 +21,29 @@ const Header = () => {
             <input type="text" placeholder="Rechercher des articles" />
           </div>
           <div className="header-action">
-            <Link to="/signup">
-              <button>S'inscrire</button>
-            </Link>
-            <Link to="/login">
-              <button>Se connecter</button>
-            </Link>
+            {token ? (
+              <>
+                <Link to="/">
+                  <button
+                    onClick={() => {
+                      handleToken(null);
+                    }}
+                  >
+                    Deconnexion
+                  </button>
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link to="/signup">
+                  <button>S'inscrire</button>
+                </Link>
+                <Link to="/login">
+                  <button>Se connecter</button>
+                </Link>
+              </>
+            )}
+
             <button>?</button>
             <select name="languages" id="languages">
               <option value="french">Français (French)</option>
