@@ -21,14 +21,26 @@ const HotOffer = ({ image, price, details, id }) => {
         </div>
 
         {details.map((detail, index) => {
-          const taille = detail.TAILLE;
-          const marque = detail.MARQUE;
-          return (
-            <div key={index} className="details">
-              <div>{taille}</div>
-              <div>{marque}</div>
-            </div>
-          );
+          if (detail.TAILLE) {
+            return (
+              <div key={index} className="details">
+                {detail.TAILLE}
+              </div>
+            );
+          } else {
+            return null;
+          }
+        })}
+        {details.map((detail, index) => {
+          if (detail.MARQUE) {
+            return (
+              <div key={index} className="details">
+                {detail.MARQUE}
+              </div>
+            );
+          } else {
+            return null;
+          }
         })}
       </div>
     </div>

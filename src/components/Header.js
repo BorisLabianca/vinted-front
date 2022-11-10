@@ -21,8 +21,12 @@ const Header = () => {
             <input type="text" placeholder="Rechercher des articles" />
           </div>
           <div className="header-action">
-            <button>S'inscrire | Se connecter</button>
-            <button>Vends tes articles</button>
+            <Link to="/signup">
+              <button>S'inscrire</button>
+            </Link>
+            <Link to="/login">
+              <button>Se connecter</button>
+            </Link>
             <button>?</button>
             <select name="languages" id="languages">
               <option value="french">Français (French)</option>
