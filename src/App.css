@@ -131,6 +131,12 @@ header {
   display: flex;
   flex-wrap: wrap;
   gap: 3px;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.product-pics .picture-mosaic::-webkit-scrollbar {
+  display: none;
 }
 .product-pics .picture-mosaic .additional-picture {
   height: calc((100% - 3px) / 2);
