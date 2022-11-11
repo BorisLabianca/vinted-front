@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 const Header = ({
   token,
+
   handleToken,
   priceSort,
   setPriceSort,
@@ -14,6 +15,8 @@ const Header = ({
   limit,
   setLimit,
 }) => {
+  // console.log(data.offers.length);
+
   return (
     <header>
       <div className="header-container">
@@ -76,7 +79,9 @@ const Header = ({
               <input
                 type="checkbox"
                 checked={
-                  priceSort === "price-asc" || priceSort === "" ? "" : "checked"
+                  priceSort === "price-desc" || priceSort === ""
+                    ? false
+                    : "checked"
                 }
                 onChange={() => {
                   if (priceSort === "price-asc") {
@@ -92,7 +97,9 @@ const Header = ({
               <input
                 type="checkbox"
                 checked={
-                  priceSort === "price-asc" || priceSort === "" ? "" : "checked"
+                  priceSort === "price-asc" || priceSort === ""
+                    ? false
+                    : "checked"
                 }
                 onChange={() => {
                   if (priceSort === "price-desc") {
@@ -109,28 +116,28 @@ const Header = ({
             <input
               type="text"
               placeholder="Prix min"
-              value={priceMin}
-              onChangeCapture={(event) => {
+              value={!priceMin ? "" : priceMin}
+              onChange={(event) => {
                 setPriceMin(event.target.value);
               }}
             />
             <input
               type="text"
               placeholder="Prix max"
-              value={priceMax}
+              value={!priceMax ? "" : priceMax}
               onChange={(event) => {
                 setPriceMax(event.target.value);
               }}
             />
           </div>
           <div className="offer-limit">
-            <label for="limit">Nombres d'offres par page :</label>
+            <label>Nombres d'offres par page :</label>
             <select
               name="limit"
               id="limit"
               onChange={(event) => {
                 setLimit(event.target.value);
-                console.log(event.target.value);
+                // console.log(event.target.value);
               }}
             >
               <option value={null}>--</option>

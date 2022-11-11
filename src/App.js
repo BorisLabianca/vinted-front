@@ -23,9 +23,9 @@ library.add(faCircleInfo, faHeart, faMagnifyingGlass);
 
 function App() {
   const [priceSort, setPriceSort] = useState("");
-  const [priceMin, setPriceMin] = useState();
-  const [priceMax, setPriceMax] = useState();
-  const [limit, setLimit] = useState();
+  const [priceMin, setPriceMin] = useState("");
+  const [priceMax, setPriceMax] = useState("");
+  const [limit, setLimit] = useState("");
   const [token, setToken] = useState(Cookies.get("token") || null);
   const handleToken = (token) => {
     if (token) {
@@ -57,9 +57,13 @@ function App() {
           element={
             <Home
               priceSort={priceSort}
+              setPriceSort={setPriceSort}
               priceMin={priceMin}
+              setPriceMin={setPriceMin}
               priceMax={priceMax}
+              setPriceMax={setPriceMax}
               limit={limit}
+              setLimit={setLimit}
             />
           }
         />

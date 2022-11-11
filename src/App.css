@@ -152,6 +152,9 @@ header {
   align-items: center;
   gap: 10px;
 }
+.owner-account-filler {
+  height: 40px;
+}
 .hot-offer-avatar-container {
   height: 35px;
   width: 35px;
