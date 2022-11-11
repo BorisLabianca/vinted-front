@@ -22,6 +22,10 @@ import {
 library.add(faCircleInfo, faHeart, faMagnifyingGlass);
 
 function App() {
+  const [priceSort, setPriceSort] = useState("");
+  const [priceMin, setPriceMin] = useState();
+  const [priceMax, setPriceMax] = useState();
+  const [limit, setLimit] = useState();
   const [token, setToken] = useState(Cookies.get("token") || null);
   const handleToken = (token) => {
     if (token) {
@@ -35,9 +39,30 @@ function App() {
 
   return (
     <Router>
-      <Header token={token} handleToken={handleToken} />
+      <Header
+        token={token}
+        handleToken={handleToken}
+        setPriceSort={setPriceSort}
+        priceSort={priceSort}
+        priceMin={priceMin}
+        setPriceMin={setPriceMin}
+        priceMax={priceMax}
+        setPriceMax={setPriceMax}
+        limit={limit}
+        setLimit={setLimit}
+      />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route
+          path="/"
+          element={
+            <Home
+              priceSort={priceSort}
+              priceMin={priceMin}
+              priceMax={priceMax}
+              limit={limit}
+            />
+          }
+        />
         <Route path="/signup" element={<Signup handleToken={handleToken} />} />
         <Route path="/login" element={<Login handleToken={handleToken} />} />
         <Route path="/offer/:id" element={<Offer />} />

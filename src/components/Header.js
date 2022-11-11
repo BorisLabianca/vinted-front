@@ -2,7 +2,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import logo from "../assets/images/logo.svg";
 import { Link } from "react-router-dom";
 
-const Header = ({ token, handleToken }) => {
+const Header = ({
+  token,
+  handleToken,
+  priceSort,
+  setPriceSort,
+  priceMin,
+  setPriceMin,
+  priceMax,
+  setPriceMax,
+  limit,
+  setLimit,
+}) => {
   return (
     <header>
       <div className="header-container">
@@ -56,6 +67,78 @@ const Header = ({ token, handleToken }) => {
               <option value="english">English (English)</option>
               <option value="spanish">Español (Spanish)</option>
               <option value="dutch">Nederlands (Dutch)</option>
+            </select>
+          </div>
+        </div>
+        <div className="filter-part">
+          <div className="price-sorting">
+            <div className="price-desc">
+              <input
+                type="checkbox"
+                checked={
+                  priceSort === "price-asc" || priceSort === "" ? "" : "checked"
+                }
+                onChange={() => {
+                  if (priceSort === "price-asc") {
+                    setPriceSort("");
+                  } else {
+                    setPriceSort("price-asc");
+                  }
+                }}
+              />
+              <span>Prix croissants</span>
+            </div>
+            <div className="price-desc">
+              <input
+                type="checkbox"
+                checked={
+                  priceSort === "price-asc" || priceSort === "" ? "" : "checked"
+                }
+                onChange={() => {
+                  if (priceSort === "price-desc") {
+                    setPriceSort("");
+                  } else {
+                    setPriceSort("price-desc");
+                  }
+                }}
+              />
+              <span>Prix décroissants</span>
+            </div>
+          </div>
+          <div className="price-range">
+            <input
+              type="text"
+              placeholder="Prix min"
+              value={priceMin}
+              onChangeCapture={(event) => {
+                setPriceMin(event.target.value);
+              }}
+            />
+            <input
+              type="text"
+              placeholder="Prix max"
+              value={priceMax}
+              onChange={(event) => {
+                setPriceMax(event.target.value);
+              }}
+            />
+          </div>
+          <div className="offer-limit">
+            <label for="limit">Nombres d'offres par page :</label>
+            <select
+              name="limit"
+              id="limit"
+              onChange={(event) => {
+                setLimit(event.target.value);
+                console.log(event.target.value);
+              }}
+            >
+              <option value={null}>--</option>
+              <option value={5}>5</option>
+              <option value={10}>10</option>
+              <option value={15}>15</option>
+              <option value={20}>20</option>
+              <option value={50}>50</option>
             </select>
           </div>
         </div>

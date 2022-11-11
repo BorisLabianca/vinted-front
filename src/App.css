@@ -12,6 +12,10 @@ body a {
 }
 header {
   border-bottom: 1px solid lightgray;
+  background-color: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 .header-container {
   max-width: 1280px;
@@ -51,6 +55,21 @@ header {
   top: 12.5px;
   left: 12.5px;
   color: #9a9a9a;
+}
+.filter-part {
+  display: flex;
+  gap: 15px;
+  margin: 15px 0 5px;
+}
+.price-sorting {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+.price-range {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 .signup-login-btn {
   width: 115px;

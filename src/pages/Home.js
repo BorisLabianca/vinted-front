@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import banner from "../assets/images/banner-wide-b31e1e250bf33255b4014ead6799dad6546dcc18dedad6925ba79a616cb676e6.jpg";
 import HotOffer from "../components/HotOffer";
 
-const Home = () => {
+const Home = ({ priceSort, priceMin, priceMax, limit }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -11,7 +11,15 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://lereacteur-vinted-api.herokuapp.com/offers"
+          "https://lereacteur-vinted-api.herokuapp.com/offers",
+          {
+            params: {
+              sort: priceSort,
+              priceMin: priceMin,
+              priceMax: priceMax,
+              limit: limit,
+            },
+          }
         );
         // console.log(response.data);
         setData(response.data);
@@ -21,7 +29,7 @@ const Home = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [priceSort, priceMin, priceMax, limit]);
 
   return isLoading ? (
     <span>En cours de chargement...</span>
