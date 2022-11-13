@@ -22,6 +22,7 @@ import {
 library.add(faCircleInfo, faHeart, faMagnifyingGlass);
 
 function App() {
+  const [search, setSearch] = useState("");
   const [priceSort, setPriceSort] = useState("");
   const [priceMin, setPriceMin] = useState("");
   const [priceMax, setPriceMax] = useState("");
@@ -50,12 +51,15 @@ function App() {
         setPriceMax={setPriceMax}
         limit={limit}
         setLimit={setLimit}
+        search={search}
+        setSearch={setSearch}
       />
       <Routes>
         <Route
           path="/"
           element={
             <Home
+              search={search}
               priceSort={priceSort}
               setPriceSort={setPriceSort}
               priceMin={priceMin}

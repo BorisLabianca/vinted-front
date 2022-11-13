@@ -8,32 +8,31 @@ const Login = ({ handleToken }) => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const [unauthorized, setUnauthorized] = useState(false);
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (!email || !password) {
       alert("Veuillez entrer votre adresse e-mail et votre mot de passe.");
     } else {
-      const fetchData = async () => {
-        try {
-          const response = await axios.post(
-            "https://lereacteur-vinted-api.herokuapp.com/user/login",
-            { email: email, password: password }
-          );
-          console.log(response.data);
+      try {
+        const response = await axios.post(
+          "https://lereacteur-vinted-api.herokuapp.com/user/login",
+          { email: email, password: password }
+        );
+        console.log(response.data);
+        if (response.data.token) {
           const token = response.data.token;
           handleToken(token);
           navigate("/");
-        } catch (error) {
-          console.log(error.response);
-          if (
-            error.response.data.error === "Unauthorized" ||
-            error.response.data.message === "User not found"
-          ) {
-            setUnauthorized(true);
-          }
         }
-      };
-      fetchData();
+      } catch (error) {
+        console.log(error.response);
+        if (
+          error.response.data.error === "Unauthorized" ||
+          error.response.data.message === "User not found"
+        ) {
+          setUnauthorized(true);
+        }
+      }
     }
   };
 

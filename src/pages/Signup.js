@@ -9,7 +9,7 @@ const Signup = ({ handleToken }) => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const [emailExists, setEmailExists] = useState(false);
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (password.length < 8) {
       alert("Votre mot de passe est trop court.");
@@ -18,27 +18,26 @@ const Signup = ({ handleToken }) => {
     } else if (!username) {
       alert("Veuillez entrer un nom d'utilisateur.");
     } else {
-      const fetchData = async () => {
-        try {
-          const response = await axios.post(
-            "https://lereacteur-vinted-api.herokuapp.com/user/signup",
-            { username: username, email: email, password: password }
-          );
-          console.log(response.data);
+      try {
+        const response = await axios.post(
+          "https://lereacteur-vinted-api.herokuapp.com/user/signup",
+          { username: username, email: email, password: password }
+        );
+        console.log(response.data);
+        if (response.data.token) {
           const token = response.data.token;
           handleToken(token);
           navigate("/");
-        } catch (error) {
-          console.log(error.response);
-          if (
-            error.response.data.message === "This email already has an account"
-          ) {
-            setEmailExists(true);
-          }
-          //   console.log(error.response.data.message);
         }
-      };
-      fetchData();
+      } catch (error) {
+        console.log(error.response);
+        if (
+          error.response?.data.message === "This email already has an account"
+        ) {
+          setEmailExists(true);
+        }
+        //   console.log(error.response.data.message);
+      }
     }
   };
   return (

@@ -12,6 +12,7 @@ const Home = ({
   setPriceMax,
   limit,
   setLimit,
+  search,
 }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
@@ -24,6 +25,7 @@ const Home = ({
           "https://lereacteur-vinted-api.herokuapp.com/offers",
           {
             params: {
+              title: search,
               sort: priceSort,
               priceMin: priceMin,
               priceMax: priceMax,
@@ -45,6 +47,7 @@ const Home = ({
     };
     fetchData();
   }, [
+    search,
     setData,
     priceSort,
     priceMin,

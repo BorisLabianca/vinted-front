@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 
 const Header = ({
   token,
-
+  search,
+  setSearch,
   handleToken,
   priceSort,
   setPriceSort,
@@ -12,7 +13,6 @@ const Header = ({
   setPriceMin,
   priceMax,
   setPriceMax,
-  limit,
   setLimit,
 }) => {
   // console.log(data.offers.length);
@@ -37,6 +37,10 @@ const Header = ({
               type="text"
               placeholder="Rechercher des articles"
               className="search-input"
+              value={search}
+              onChange={(event) => {
+                setSearch(event.target.value);
+              }}
             />
             <FontAwesomeIcon icon="magnifying-glass" className="search-icon" />
           </div>
@@ -45,6 +49,7 @@ const Header = ({
               <>
                 <Link to="/">
                   <button
+                    className="deconnexion"
                     onClick={() => {
                       handleToken(null);
                     }}
