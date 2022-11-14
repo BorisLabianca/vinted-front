@@ -14,6 +14,7 @@ const Header = ({
   priceMax,
   setPriceMax,
   setLimit,
+  setPageNumber,
 }) => {
   // console.log(data.offers.length);
 
@@ -68,7 +69,7 @@ const Header = ({
                 </Link>
               </>
             )}
-            <Link to="/publish">
+            <Link to={token ? "/publish" : "/Login"}>
               <button className="to-publish">Vends tes articles</button>
             </Link>
 
@@ -127,6 +128,7 @@ const Header = ({
               value={!priceMin ? "" : priceMin}
               onChange={(event) => {
                 setPriceMin(event.target.value);
+                setPageNumber(1);
               }}
             />
             <input
@@ -135,6 +137,7 @@ const Header = ({
               value={!priceMax ? "" : priceMax}
               onChange={(event) => {
                 setPriceMax(event.target.value);
+                setPageNumber(1);
               }}
             />
           </div>

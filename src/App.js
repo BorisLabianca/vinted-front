@@ -27,6 +27,8 @@ function App() {
   const [priceSort, setPriceSort] = useState("");
   const [priceMin, setPriceMin] = useState("");
   const [priceMax, setPriceMax] = useState("");
+  const [pageCount, setPageCount] = useState(1);
+  const [pageNumber, setPageNumber] = useState(1);
   const [limit, setLimit] = useState("");
   const [token, setToken] = useState(Cookies.get("token") || null);
   const handleToken = (token) => {
@@ -50,6 +52,7 @@ function App() {
         setPriceMin={setPriceMin}
         priceMax={priceMax}
         setPriceMax={setPriceMax}
+        setPageNumber={setPageNumber}
         limit={limit}
         setLimit={setLimit}
         search={search}
@@ -67,6 +70,10 @@ function App() {
               setPriceMin={setPriceMin}
               priceMax={priceMax}
               setPriceMax={setPriceMax}
+              pageCount={pageCount}
+              setPageCount={setPageCount}
+              pageNumber={pageNumber}
+              setPageNumber={setPageNumber}
               limit={limit}
               setLimit={setLimit}
             />

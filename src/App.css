@@ -442,6 +442,117 @@ header {
   font-size: 12px;
 }
 
+/* publish page */
+.publish-main {
+  background-color: #ebedee;
+}
+.publish-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  height: 1120px;
+}
+.publish-container h2 {
+  font-size: 24px;
+  padding: 40px 0 0;
+  box-sizing: border-box;
+}
+.publish-container .picture-upload {
+  padding: 24px;
+  background-color: white;
+  box-shadow: 0 0 2px grey;
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.publish-container .picture-upload .dashed-border {
+  width: 1230px;
+  height: 200px;
+  padding: 1px;
+  border: 1px dashed #ebedee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.publish-container .picture-upload .file-input-label {
+  color: #0ab1ba;
+  font-size: 16px;
+  font-weight: 700;
+  border: 1px solid #0ab1ba;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 200px;
+}
+.publish-container .picture-upload .file-input-label .input-sign {
+  font-size: 40px;
+}
+
+.publish-container .picture-upload .file-input {
+  display: none;
+}
+
+.publish-container .section-div {
+  background-color: white;
+  box-shadow: 0 0 2px grey;
+  margin: 20px 0;
+}
+.publish-container div .top-div {
+  border-bottom: 1px solid #ebedee;
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+}
+.publish-container div .bottom-div {
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+}
+.publish-container .input-field {
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #ebedee;
+  width: 50%;
+}
+.publish-container .price-input-div .input-field {
+  width: 175px;
+}
+.publish-container .price-input-div .checkbox {
+  transform: scale(2);
+}
+.publish-container .price-input-div {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  justify-content: flex-start;
+}
+.publish-container .price-input-div .trading {
+  display: flex;
+  gap: 10px;
+}
+.publish-container .input-field::placeholder {
+  color: #c4c7c9;
+  font-size: 16px;
+}
+.publish-container .submit-btn {
+  border: none;
+  background-color: #09b0ba;
+  border-radius: 5px;
+  color: white;
+  margin: 50px 0;
+  width: 53px;
+  height: 20px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: content-box;
+}
 .submitted-picture {
   height: 150px;
 }

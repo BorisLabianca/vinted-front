@@ -12,35 +12,38 @@ const Home = ({
   setPriceMax,
   limit,
   setLimit,
+  pageNumber,
+  setPageNumber,
+  pageCount,
+  setPageCount,
   search,
 }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
-  const [pageCount, setPageCount] = useState(1);
-  const [pageNumber, setPageNumber] = useState(1);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://lereacteur-vinted-api.herokuapp.com/offers",
-          {
-            params: {
-              title: search,
-              sort: priceSort,
-              priceMin: priceMin,
-              priceMax: priceMax,
-              limit: limit,
-              page: pageNumber,
-            },
-          }
+          `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}&sort=${priceSort}&priceMin=${priceMin}&priceMax=${priceMax}&limit=${limit}&page=${pageNumber}`
+          // {
+          //   params: {
+          //     title: search,
+          //     sort: priceSort,
+          //     priceMin: priceMin,
+          //     priceMax: priceMax,
+          //     limit: limit,
+          //     page: pageNumber,
+          //   },
+          // }
         );
         // console.log(response.data);
         setData(response.data);
         setIsLoading(false);
-        setPageCount(
-          Math.ceil(response.data.count / response.data.offers.length)
-        );
-        // console.log(pageCount);
+        setPageCount(Math.ceil(response.data.count / limit));
+        // console.log("data count", data.count);
+        // console.log("page count", pageCount);
+        // console.log("offer length ", response.data.offers.length);
       } catch (error) {
         console.log(error.response);
       }
@@ -48,7 +51,6 @@ const Home = ({
     fetchData();
   }, [
     search,
-    setData,
     priceSort,
     priceMin,
     priceMax,
