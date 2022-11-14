@@ -68,14 +68,17 @@ const Header = ({
                 </Link>
               </>
             )}
+            <Link to="/publish">
+              <button className="to-publish">Vends tes articles</button>
+            </Link>
 
-            <button className="help-btn">?</button>
+            {/* <button className="help-btn">?</button>
             <select name="languages" id="languages">
               <option value="french">Français (French)</option>
               <option value="english">English (English)</option>
               <option value="spanish">Español (Spanish)</option>
               <option value="dutch">Nederlands (Dutch)</option>
-            </select>
+            </select> */}
           </div>
         </div>
         <div className="filter-part">

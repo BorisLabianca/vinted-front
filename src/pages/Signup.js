@@ -7,6 +7,7 @@ const Signup = ({ handleToken }) => {
   const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [newsletter, setNewsLetter] = useState(false);
   const navigate = useNavigate();
   const [emailExists, setEmailExists] = useState(false);
   const handleSubmit = async (event) => {
@@ -80,7 +81,13 @@ const Signup = ({ handleToken }) => {
           </div>
         ) : null}
         <div className="checkbox-div">
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            checked={newsletter}
+            onChange={() => {
+              setNewsLetter(!newsletter);
+            }}
+          />
           <label>S'inscrire à notre newsletter</label>
           <p>
             En m'inscrivant je confirme avoir lu et accepté les Termes &

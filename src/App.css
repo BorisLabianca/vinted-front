@@ -93,6 +93,17 @@ header {
   margin: 0 20px 0 0;
   cursor: pointer;
 }
+.to-publish {
+  width: 115px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 12px;
+  background-color: #2cb1ba;
+  margin: 0 20px 0 0;
+  cursor: pointer;
+}
 .help-btn {
   border: 1px solid black;
   border-radius: 50%;
@@ -429,4 +440,8 @@ header {
 .unauthorized {
   color: red;
   font-size: 12px;
+}
+
+.submitted-picture {
+  height: 150px;
 }
