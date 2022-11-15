@@ -5,6 +5,7 @@ const Publish = ({ token }) => {
   const location = useLocation();
   // const navigate = useNavigate();
   const [picture, setPicture] = useState();
+  // const [pictures, setPictures] = useState();
   //   const [preview, setPreview] = useState();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -13,7 +14,7 @@ const Publish = ({ token }) => {
   const [color, setColor] = useState("");
   const [condition, setCondition] = useState("");
   const [city, setCity] = useState("");
-  const [price, setPrice] = useState("");
+  const [price, setPrice] = useState(0);
   const [data, setData] = useState();
   const [trading, setTrading] = useState(false);
 
@@ -58,7 +59,7 @@ const Publish = ({ token }) => {
             <h2>Vends ton article</h2>
             <div className="picture-upload">
               <div className="dashed-border">
-                <label for="file" className="file-input-label">
+                <label htmlFor="file" className="file-input-label">
                   <span className="input-sign">+</span>
                   <span>Ajoute une photo</span>
                 </label>
@@ -70,7 +71,6 @@ const Publish = ({ token }) => {
                   multiple
                   onChange={(event) => {
                     setPicture(event.target.files[0]);
-                    // console.log(event.target.files[0]);
 
                     // const reader = new FileReader();
                     // reader.onload = () => {

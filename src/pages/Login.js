@@ -22,10 +22,8 @@ const Login = ({ handleToken }) => {
         if (response.data.token) {
           const token = response.data.token;
           handleToken(token);
-
-          navigate(
-            location.state.previousUrl ? location.state.previousUrl : "/"
-          );
+          navigate(location.state.previousUrl);
+          console.log(location.state.previousUrl);
         }
       } catch (error) {
         console.log(error.response);

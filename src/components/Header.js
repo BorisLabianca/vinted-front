@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import logo from "../assets/images/logo.svg";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = ({
   token,
@@ -69,7 +69,8 @@ const Header = ({
                 </Link>
               </>
             )}
-            <Link to={"/publish"}>
+
+            <Link to="/publish">
               <button className="to-publish">Vends tes articles</button>
             </Link>
 
