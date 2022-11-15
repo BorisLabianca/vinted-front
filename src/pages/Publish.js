@@ -88,13 +88,13 @@ const Publish = ({ token }) => {
                   }}
                 />
                 {/* <img src={preview} alt="" /> */}
-                {/* {picture ? (
+                {picture ? (
                   <img
                     src={URL.createObjectURL(picture)}
                     alt="product"
                     className="publish-pic-preview"
                   />
-                ) : null} */}
+                ) : null}
               </div>
             </div>
             <div className="title-and-description section-div">
