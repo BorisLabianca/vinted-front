@@ -219,11 +219,16 @@ const Publish = ({ token }) => {
             </div>
           </form>
           {data && (
-            <img
-              src={data.product_image.secure_url}
-              alt="product"
-              className="submitted-picture"
-            />
+            <>
+              <img
+                src={data.product_image.secure_url}
+                alt="product"
+                className="submitted-picture"
+              />{" "}
+              <span className="submitted-message">
+                Votre offre a bien été enregistrée
+              </span>{" "}
+            </>
           )}
         </div>
       </main>
