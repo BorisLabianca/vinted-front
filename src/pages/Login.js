@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import axios from "axios";
 
 const Login = ({ handleToken }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
   const [unauthorized, setUnauthorized] = useState(false);
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -21,7 +22,10 @@ const Login = ({ handleToken }) => {
         if (response.data.token) {
           const token = response.data.token;
           handleToken(token);
-          navigate("/");
+
+          navigate(
+            location.state.previousUrl ? location.state.previousUrl : "/"
+          );
         }
       } catch (error) {
         console.log(error.response);

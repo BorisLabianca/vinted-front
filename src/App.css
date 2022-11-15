@@ -56,6 +56,10 @@ header {
   left: 12.5px;
   color: #9a9a9a;
 }
+.header-top .header-action {
+  display: flex;
+  justify-content: space-between;
+}
 .filter-part {
   display: flex;
   gap: 15px;
@@ -449,7 +453,7 @@ header {
 .publish-container {
   max-width: 1280px;
   margin: 0 auto;
-  height: 1120px;
+  height: 1150px;
 }
 .publish-container h2 {
   font-size: 24px;
@@ -518,8 +522,14 @@ header {
   border-bottom: 1px solid #ebedee;
   width: 50%;
 }
+.publish-container .input-field:focus {
+  border-color: #09b0ba;
+}
 .publish-container .price-input-div .input-field {
   width: 175px;
+}
+.publish-container .price-input-div .input-field:focus {
+  border-color: #09b0ba;
 }
 .publish-container .price-input-div .checkbox {
   transform: scale(2);
@@ -539,7 +549,11 @@ header {
   color: #c4c7c9;
   font-size: 16px;
 }
-.publish-container .submit-btn {
+.publish-container .btn-container {
+  display: flex;
+  justify-content: flex-end;
+}
+.publish-container .btn-container .submit-btn {
   border: none;
   background-color: #09b0ba;
   border-radius: 5px;
@@ -552,6 +566,7 @@ header {
   align-items: center;
   justify-content: center;
   box-sizing: content-box;
+  font-size: 16px;
 }
 .submitted-picture {
   height: 150px;
