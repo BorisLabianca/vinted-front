@@ -475,6 +475,7 @@ header {
   padding: 1px;
   border: 1px dashed #ebedee;
   display: flex;
+  flex-direction: row-reverse;
   align-items: center;
   justify-content: center;
 }
@@ -499,7 +500,9 @@ header {
 .publish-container .picture-upload .file-input {
   display: none;
 }
-
+.publish-pic-preview {
+  height: 180px;
+}
 .publish-container .section-div {
   background-color: white;
   box-shadow: 0 0 2px grey;
@@ -568,9 +571,9 @@ header {
   box-sizing: content-box;
   font-size: 16px;
 }
-.submitted-picture {
+/* .submitted-picture {
   height: 150px;
-}
+} */
 
 /* Payment page */
 .payment-main {
@@ -583,7 +586,56 @@ header {
   padding: 36px 20px;
   margin: 0 auto;
   width: 600px;
+  box-sizing: border-box;
+}
+.order-summary p {
+  margin-bottom: 40px;
+  color: #666666;
+  font-size: 14px;
+}
+.payment-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 25px;
+}
+.payment-details div {
+  display: flex;
+  justify-content: space-between;
+  color: #666666;
+}
+.grand-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 35px;
 }
 .emphasise {
+  font-weight: 700;
+}
+.order-summary hr {
+  margin: 35px 0px;
+}
+.final-notice {
+  text-align: justify;
+}
+.card-details {
+  box-shadow: 0 1px 3px rgb(50 50 93 / 15%), 0 1px 0 rgb(0 0 0 / 2%);
+  border-radius: 4px;
+  margin: 10px 0 20px;
+  padding: 10px 14px;
+}
+
+.pay-btn {
+  width: 552px;
+  height: 44px;
+  padding: 0px 14px;
+  margin: 8px 0px 0px;
+  background-color: #01bb6a;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
   font-weight: 700;
 }

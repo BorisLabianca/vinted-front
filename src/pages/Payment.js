@@ -4,7 +4,7 @@ import CheckoutForm from "../components/CheckoutForm";
 import { useLocation } from "react-router-dom";
 
 const stripePromise = loadStripe(
-  "pk_test_51HCObyDVswqktOkX6VVcoA7V2sjOJCUB4FBt3EOiAdSz5vWudpWxwcSY8z2feWXBq6lwMgAb5IVZZ1p84ntLq03H00LDVc2RwP"
+  "pk_test_51M4UiHDyQmaF7KhQkOh3V7oxPXIQyBjkVhUlLrJZkrTD1TIblFkGLbvlLKo8rIlwwUdNBKBCraoZZOODxxw8dO6x00zFSGCFRU"
 );
 
 const Payment = ({ userId }) => {
@@ -34,11 +34,11 @@ const Payment = ({ userId }) => {
             </div>
           </div>
           <hr />
-          <div className="total">
+          <div className="grand-total">
             <span>Total</span>
             <span>{grandTotal.toFixed(2)} €</span>
           </div>
-          <div>
+          <div className="final-notice">
             Il ne vous reste plus qu'une étape pour vous offrir{" "}
             <span className="emphasise">{title}</span>. Vous allez payer{" "}
             <span className="emphasise">{grandTotal.toFixed(2)} € </span> (frais

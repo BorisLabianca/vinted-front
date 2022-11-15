@@ -11,7 +11,7 @@ const Offer = ({ token }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
+          `https://site--vinted-backend--67k4ycyfnl9b.code.run/offer/${id}`
         );
         // console.log(response.data);
         setData(response.data);
@@ -34,10 +34,11 @@ const Offer = ({ token }) => {
               <img src={data.product_image.secure_url} alt="" />
             </div>
             <div className="picture-mosaic">
-              {data.product_pictures.map((pic) => {
+              {data.product_pictures.map((pic, index) => {
+                console.log(data.product_pictures);
                 return (
-                  <div key={pic.asset_id} className="additional-picture">
-                    <img src={pic.secure_url} alt="" />
+                  <div key={index} className="additional-picture">
+                    <img src={pic} alt="" />
                   </div>
                 );
               })}

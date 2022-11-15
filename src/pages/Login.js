@@ -15,15 +15,23 @@ const Login = ({ handleToken, setUserId }) => {
     } else {
       try {
         const response = await axios.post(
-          "https://lereacteur-vinted-api.herokuapp.com/user/login",
-          { email: email, password: password }
+          "https://site--vinted-backend--67k4ycyfnl9b.code.run/user/login",
+          {
+            email: email,
+            password: password,
+          }
         );
         // console.log(response.data);
         // console.log(response.data._id);
         if (response.data.token) {
           const token = response.data.token;
           handleToken(token);
-          navigate(location.state.previousUrl);
+          if (location.state?.previousUrl) {
+            navigate(location.state.previousUrl);
+          } else {
+            navigate("/");
+          }
+          // navigate(location.state.previousUrl);
           // console.log(location.state.previousUrl);
           setUserId(response.data._id);
         }

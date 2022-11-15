@@ -25,7 +25,8 @@ const Home = ({
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}&sort=${priceSort}&priceMin=${priceMin}&priceMax=${priceMax}&limit=${limit}&page=${pageNumber}`
+          `https://site--vinted-backend--67k4ycyfnl9b.code.run/offers?title=${search}&sort=${priceSort}&priceMin=${priceMin}&priceMax=${priceMax}&limit=${limit}&page=${pageNumber}`
+          // `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}&sort=${priceSort}&priceMin=${priceMin}&priceMax=${priceMax}&limit=${limit}&page=${pageNumber}`
           // {
           //   params: {
           //     title: search,
@@ -76,6 +77,7 @@ const Home = ({
           </div>
           <div className="offers-display">
             {data.offers.map((offer) => {
+              console.log(data.offers);
               return (
                 <HotOffer
                   key={offer._id}

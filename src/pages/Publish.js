@@ -5,7 +5,7 @@ const Publish = ({ token }) => {
   const location = useLocation();
   // const navigate = useNavigate();
   const [picture, setPicture] = useState();
-  // const [pictures, setPictures] = useState();
+  const [pictures, setPictures] = useState([]);
   //   const [preview, setPreview] = useState();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -22,7 +22,7 @@ const Publish = ({ token }) => {
     event.preventDefault();
     try {
       const formData = new FormData();
-      formData.append("picture", picture);
+      formData.append("image", picture);
       formData.append("title", title);
       formData.append("description", description);
       formData.append("brand", brand);
@@ -31,9 +31,14 @@ const Publish = ({ token }) => {
       formData.append("condition", condition);
       formData.append("city", city);
       formData.append("price", price);
+      Object.keys(pictures).forEach((picture) => {
+        formData.append("picture", pictures[picture]);
+      });
 
       const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/offer/publish",
+        // "https://lereacteur-vinted-api.herokuapp.com/offer/publish"
+
+        "https://site--vinted-backend--67k4ycyfnl9b.code.run/offer/publish",
         formData,
         {
           headers: {
@@ -68,10 +73,11 @@ const Publish = ({ token }) => {
                   type="file"
                   name="file"
                   id="file"
-                  multiple
+                  multiple={true}
                   onChange={(event) => {
                     setPicture(event.target.files[0]);
-
+                    const picTab = Object.values(event.target.files);
+                    setPictures(picTab);
                     // const reader = new FileReader();
                     // reader.onload = () => {
                     //   if (reader.readyState === 2) {
@@ -82,6 +88,13 @@ const Publish = ({ token }) => {
                   }}
                 />
                 {/* <img src={preview} alt="" /> */}
+                {/* {picture ? (
+                  <img
+                    src={URL.createObjectURL(picture)}
+                    alt="product"
+                    className="publish-pic-preview"
+                  />
+                ) : null} */}
               </div>
             </div>
             <div className="title-and-description section-div">
