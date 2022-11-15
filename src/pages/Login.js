@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import axios from "axios";
 
-const Login = ({ handleToken }) => {
+const Login = ({ handleToken, setUserId }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -18,12 +18,14 @@ const Login = ({ handleToken }) => {
           "https://lereacteur-vinted-api.herokuapp.com/user/login",
           { email: email, password: password }
         );
-        console.log(response.data);
+        // console.log(response.data);
+        // console.log(response.data._id);
         if (response.data.token) {
           const token = response.data.token;
           handleToken(token);
           navigate(location.state.previousUrl);
-          console.log(location.state.previousUrl);
+          // console.log(location.state.previousUrl);
+          setUserId(response.data._id);
         }
       } catch (error) {
         console.log(error.response);

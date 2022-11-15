@@ -571,3 +571,19 @@ header {
 .submitted-picture {
   height: 150px;
 }
+
+/* Payment page */
+.payment-main {
+  background-color: #ebedee;
+  height: 100vh;
+  padding: 36px;
+}
+.payment-container {
+  background-color: white;
+  padding: 36px 20px;
+  margin: 0 auto;
+  width: 600px;
+}
+.emphasise {
+  font-weight: 700;
+}

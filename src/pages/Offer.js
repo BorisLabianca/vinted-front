@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
-const Offer = () => {
+const Offer = ({ token }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
@@ -107,7 +107,15 @@ const Offer = () => {
               ) : null}
             </div>
             <div className="buy-btn">
-              <button>Acheter</button>
+              <Link
+                to="/payment"
+                state={{
+                  amount: data.product_price.toFixed(2),
+                  title: data.product_name,
+                }}
+              >
+                <button>Acheter</button>
+              </Link>
             </div>
           </div>
         </div>

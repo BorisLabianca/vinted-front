@@ -9,6 +9,7 @@ import Offer from "./pages/Offer";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Publish from "./pages/Publish";
+import Payment from "./pages/Payment";
 
 // import des composants
 import Header from "./components/Header";
@@ -31,6 +32,7 @@ function App() {
   const [pageNumber, setPageNumber] = useState(1);
   const [limit, setLimit] = useState("");
   const [token, setToken] = useState(Cookies.get("token") || null);
+  const [userId, setUserId] = useState();
   const handleToken = (token) => {
     if (token) {
       setToken(token);
@@ -80,9 +82,16 @@ function App() {
           }
         />
         <Route path="/signup" element={<Signup handleToken={handleToken} />} />
-        <Route path="/login" element={<Login handleToken={handleToken} />} />
-        <Route path="/offer/:id" element={<Offer />} />
+        <Route
+          path="/login"
+          element={<Login handleToken={handleToken} setUserId={setUserId} />}
+        />
+        <Route path="/offer/:id" element={<Offer token={token} />} />
         <Route path="/publish" element={<Publish token={token} />} />
+        <Route
+          path="/payment"
+          element={<Payment token={token} userId={userId} />}
+        />
       </Routes>
     </Router>
   );
