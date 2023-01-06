@@ -35,7 +35,7 @@ const Offer = ({ token }) => {
             </div>
             <div className="picture-mosaic">
               {data.product_pictures.map((pic, index) => {
-                console.log(data.product_pictures);
+                // console.log(data.product_pictures);
                 return (
                   <div key={index} className="additional-picture">
                     <img src={pic} alt="" />

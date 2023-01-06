@@ -40,8 +40,8 @@ const Home = ({
         );
         // console.log(response.data);
         setData(response.data);
+        setPageCount(Math.ceil(Number(response.data.count) / Number(limit)));
         setIsLoading(false);
-        setPageCount(Math.ceil(response.data.count / limit));
         // console.log("data count", data.count);
         // console.log("page count", pageCount);
         // console.log("offer length ", response.data.offers.length);
@@ -77,7 +77,7 @@ const Home = ({
           </div>
           <div className="offers-display">
             {data.offers.map((offer) => {
-              console.log(data.offers);
+              // console.log(data.offers);
               return (
                 <HotOffer
                   key={offer._id}
@@ -86,35 +86,44 @@ const Home = ({
                   setPriceMin={setPriceMin}
                   setPriceMax={setPriceMax}
                   setLimit={setLimit}
+                  setPageNumber={pageNumber}
                 />
               );
             })}
           </div>
-          <div>
-            {pageNumber === 1 ? null : (
-              <button
-                onClick={() => {
-                  setPageNumber(pageNumber - 1);
-                }}
+          {pageCount > 1 ? (
+            <div className="pagination">
+              <div
+                className={pageNumber === 1 ? "disabled" : "active"}
+                onClick={
+                  pageNumber === 1
+                    ? null
+                    : () => {
+                        setPageNumber(pageNumber - 1);
+                      }
+                }
               >
                 Page précédente
-              </button>
-            )}
-            {pageCount === 1 ? null : (
+              </div>
+
               <span>
                 Page {pageNumber}/{pageCount}
               </span>
-            )}
-            {pageNumber === pageCount ? null : (
-              <button
-                onClick={() => {
-                  setPageNumber(pageNumber + 1);
-                }}
+
+              <div
+                className={pageNumber === pageCount ? "disabled" : "active"}
+                onClick={
+                  pageNumber === pageCount
+                    ? null
+                    : () => {
+                        setPageNumber(pageNumber + 1);
+                      }
+                }
               >
                 Page suivante
-              </button>
-            )}
-          </div>
+              </div>
+            </div>
+          ) : null}
         </div>
       </div>
     </main>

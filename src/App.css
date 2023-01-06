@@ -350,6 +350,42 @@ header {
   border-radius: 5px;
   font-size: 16px;
 }
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+.disabled {
+  border: 1px solid #2cb1ba;
+  border-radius: 5px;
+  color: #2cb1ba;
+  font-size: 14px;
+  padding: 10px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: not-allowed;
+  height: fit-content;
+  width: fit-content;
+}
+.active {
+  border: 1px solid #2cb1ba;
+  border-radius: 5px;
+  color: white;
+  font-size: 14px;
+  padding: 10px;
+  background-color: #2cb1ba;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: fit-content;
+  width: fit-content;
+}
+
 /* signup page */
 .signup-container {
   display: flex;

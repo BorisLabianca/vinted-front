@@ -7,6 +7,7 @@ const HotOffer = ({
   setPriceMax,
   setPriceSort,
   setLimit,
+  setPageNumber,
 }) => {
   // console.log(offer);
   return (
@@ -35,8 +36,9 @@ const HotOffer = ({
         onClick={() => {
           setPriceMin("");
           setPriceMax("");
-          setLimit("");
+          setLimit(50);
           setPriceSort("");
+          setPageNumber(1);
         }}
       >
         <img src={offer.product_image.secure_url} alt="Product pic" />

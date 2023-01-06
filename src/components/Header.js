@@ -13,6 +13,7 @@ const Header = ({
   setPriceMin,
   priceMax,
   setPriceMax,
+  limit,
   setLimit,
   setPageNumber,
 }) => {
@@ -151,6 +152,7 @@ const Header = ({
                 setLimit(event.target.value);
                 // console.log(event.target.value);
               }}
+              value={limit}
             >
               <option value={null}>--</option>
               <option value={5}>5</option>

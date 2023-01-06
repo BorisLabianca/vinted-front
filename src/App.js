@@ -30,7 +30,7 @@ function App() {
   const [priceMax, setPriceMax] = useState("");
   const [pageCount, setPageCount] = useState(1);
   const [pageNumber, setPageNumber] = useState(1);
-  const [limit, setLimit] = useState("");
+  const [limit, setLimit] = useState(50);
   const [token, setToken] = useState(Cookies.get("token") || null);
   const [userId, setUserId] = useState();
   const handleToken = (token) => {
