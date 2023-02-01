@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import logo from "../assets/images/logo.svg";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = ({
   token,
@@ -17,8 +17,7 @@ const Header = ({
   setLimit,
   setPageNumber,
 }) => {
-  // console.log(data.offers.length);
-
+  const location = useLocation();
   return (
     <header>
       <div className="header-container">
@@ -84,84 +83,87 @@ const Header = ({
             </select> */}
           </div>
         </div>
-        <div className="filter-part">
-          <div className="price-sorting">
-            <div className="price-desc">
-              <input
-                type="checkbox"
-                checked={
-                  priceSort === "price-desc" || priceSort === ""
-                    ? false
-                    : "checked"
-                }
-                onChange={() => {
-                  if (priceSort === "price-asc") {
-                    setPriceSort("");
-                  } else {
-                    setPriceSort("price-asc");
+        {location.pathname === "/signup" ||
+        location.pathname === "/login" ? null : (
+          <div className="filter-part">
+            <div className="price-sorting">
+              <div className="price-desc">
+                <input
+                  type="checkbox"
+                  checked={
+                    priceSort === "price-desc" || priceSort === ""
+                      ? false
+                      : "checked"
                   }
+                  onChange={() => {
+                    if (priceSort === "price-asc") {
+                      setPriceSort("");
+                    } else {
+                      setPriceSort("price-asc");
+                    }
+                  }}
+                />
+                <span>Prix croissants</span>
+              </div>
+              <div className="price-desc">
+                <input
+                  type="checkbox"
+                  checked={
+                    priceSort === "price-asc" || priceSort === ""
+                      ? false
+                      : "checked"
+                  }
+                  onChange={() => {
+                    if (priceSort === "price-desc") {
+                      setPriceSort("");
+                    } else {
+                      setPriceSort("price-desc");
+                    }
+                  }}
+                />
+                <span>Prix décroissants</span>
+              </div>
+            </div>
+            <div className="price-range">
+              <input
+                type="text"
+                placeholder="Prix min"
+                value={!priceMin ? "" : priceMin}
+                onChange={(event) => {
+                  setPriceMin(event.target.value);
+                  setPageNumber(1);
                 }}
               />
-              <span>Prix croissants</span>
-            </div>
-            <div className="price-desc">
               <input
-                type="checkbox"
-                checked={
-                  priceSort === "price-asc" || priceSort === ""
-                    ? false
-                    : "checked"
-                }
-                onChange={() => {
-                  if (priceSort === "price-desc") {
-                    setPriceSort("");
-                  } else {
-                    setPriceSort("price-desc");
-                  }
+                type="text"
+                placeholder="Prix max"
+                value={!priceMax ? "" : priceMax}
+                onChange={(event) => {
+                  setPriceMax(event.target.value);
+                  setPageNumber(1);
                 }}
               />
-              <span>Prix décroissants</span>
+            </div>
+            <div className="offer-limit">
+              <label>Nombres d'offres par page :</label>
+              <select
+                name="limit"
+                id="limit"
+                onChange={(event) => {
+                  setLimit(event.target.value);
+                  // console.log(event.target.value);
+                }}
+                value={limit}
+              >
+                <option value={5}>5</option>
+                <option value={10}>10</option>
+                <option value={15}>15</option>
+                <option value={20}>20</option>
+                <option value={50}>50</option>
+              </select>
             </div>
           </div>
-          <div className="price-range">
-            <input
-              type="text"
-              placeholder="Prix min"
-              value={!priceMin ? "" : priceMin}
-              onChange={(event) => {
-                setPriceMin(event.target.value);
-                setPageNumber(1);
-              }}
-            />
-            <input
-              type="text"
-              placeholder="Prix max"
-              value={!priceMax ? "" : priceMax}
-              onChange={(event) => {
-                setPriceMax(event.target.value);
-                setPageNumber(1);
-              }}
-            />
-          </div>
-          <div className="offer-limit">
-            <label>Nombres d'offres par page :</label>
-            <select
-              name="limit"
-              id="limit"
-              onChange={(event) => {
-                setLimit(event.target.value);
-                // console.log(event.target.value);
-              }}
-              value={limit}
-            >
-              <option value={5}>5</option>
-              <option value={10}>10</option>
-              <option value={15}>15</option>
-              <option value={20}>20</option>
-              <option value={50}>50</option>
-            </select>
-          </div>
-        </div>
+        )}
       </div>
     </header>
   );

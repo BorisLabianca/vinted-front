@@ -477,9 +477,13 @@ header {
   display: flex;
   flex-direction: column;
 }
+.display-none {
+  visibility: hidden;
+  height: 14px;
+}
 .unauthorized {
   color: red;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 /* publish page */

@@ -14,6 +14,7 @@ const Login = ({ handleToken, setUserId }) => {
       alert("Veuillez entrer votre adresse e-mail et votre mot de passe.");
     } else {
       try {
+        setUnauthorized(false);
         const response = await axios.post(
           "https://site--vinted-backend--67k4ycyfnl9b.code.run/user/login",
           {
@@ -38,7 +39,7 @@ const Login = ({ handleToken, setUserId }) => {
       } catch (error) {
         console.log(error.response);
         if (
-          error.response.data.error === "Unauthorized" ||
+          error.response.data.message === "Unauthorized" ||
           error.response.data.message === "User not found"
         ) {
           setUnauthorized(true);
@@ -69,9 +70,9 @@ const Login = ({ handleToken, setUserId }) => {
           }}
           className="necessary"
         />
-        {unauthorized ? (
-          <div className="unauthorized">Mauvais email et/ou mot de passe</div>
-        ) : null}
+        <div className={unauthorized ? "unauthorized" : "display-none"}>
+          Mauvais email et/ou mot de passe
+        </div>
         <input
           type="submit"
           value="Se connecter"
