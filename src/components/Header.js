@@ -83,8 +83,7 @@ const Header = ({
             </select> */}
           </div>
         </div>
-        {location.pathname === "/signup" ||
-        location.pathname === "/login" ? null : (
+        {location.pathname !== "/" ? null : (
           <div className="filter-part">
             <div className="price-sorting">
               <div className="price-desc">
