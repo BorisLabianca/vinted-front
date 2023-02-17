@@ -490,6 +490,11 @@ header {
 .publish-main {
   background-color: #ebedee;
 }
+.loader-div {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+}
 .publish-container {
   max-width: 1280px;
   margin: 0 auto;
@@ -515,9 +520,10 @@ header {
   padding: 1px;
   border: 1px dashed #ebedee;
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  gap: 15px;
 }
 .publish-container .picture-upload .file-input-label {
   color: #0ab1ba;
@@ -531,12 +537,16 @@ header {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  width: 200px;
+  width: 150px;
+  flex-shrink: 0;
 }
 .publish-container .picture-upload .file-input-label .input-sign {
   font-size: 40px;
 }
-
+.display-pictures-to-upload {
+  overflow-x: scroll;
+  display: flex;
+}
 .publish-container .picture-upload .file-input {
   display: none;
 }
@@ -595,6 +605,8 @@ header {
 .publish-container .btn-container {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+  gap: 50px;
 }
 .publish-container .btn-container .submit-btn {
   border: none;
@@ -610,6 +622,22 @@ header {
   justify-content: center;
   box-sizing: content-box;
   font-size: 16px;
+}
+.submit-btn-disabled {
+  border: none;
+  background-color: #a5e7ea;
+  border-radius: 5px;
+  color: white;
+  margin: 50px 0;
+  width: 53px;
+  height: 20px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: content-box;
+  font-size: 16px;
+  cursor: not-allowed;
 }
 .submitted-picture {
   height: 150px;

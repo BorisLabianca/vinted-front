@@ -1,11 +1,12 @@
 import axios from "axios";
 import { useState } from "react";
 import { useLocation, Navigate } from "react-router-dom";
+import { RotatingLines } from "react-loader-spinner";
 const Publish = ({ token }) => {
   const location = useLocation();
   // const navigate = useNavigate();
-  const [picture, setPicture] = useState();
-  const [pictures, setPictures] = useState([]);
+  const [picture, setPicture] = useState("");
+  const [pictures, setPictures] = useState("");
   //   const [preview, setPreview] = useState();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -14,12 +15,15 @@ const Publish = ({ token }) => {
   const [color, setColor] = useState("");
   const [condition, setCondition] = useState("");
   const [city, setCity] = useState("");
-  const [price, setPrice] = useState(0);
-  const [data, setData] = useState();
+  const [price, setPrice] = useState("");
+  const [message, setMessage] = useState("");
   const [trading, setTrading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setMessage("");
+    setLoading(true);
     try {
       const formData = new FormData();
       formData.append("image", picture);
@@ -47,11 +51,24 @@ const Publish = ({ token }) => {
           },
         }
       );
-      setData(response.data);
+      setMessage("Offre publiée.");
+      setPicture("");
+      setPictures("");
+      setTitle("");
+      setDescription("");
+      setCondition("");
+      setBrand("");
+      setSize("");
+      setColor("");
+      setCity("");
+      setPrice("");
+      setTrading(false);
       console.log(response.data);
     } catch (error) {
-      console.log(error.response);
+      console.log(error.response.data.message);
+      setMessage(error.response.data.message);
     }
+    setLoading(false);
   };
 
   if (!token) {
@@ -66,7 +83,7 @@ const Publish = ({ token }) => {
               <div className="dashed-border">
                 <label htmlFor="file" className="file-input-label">
                   <span className="input-sign">+</span>
-                  <span>Ajoute une photo</span>
+                  <span>Ajoute au moins une photo</span>
                 </label>
                 <input
                   className="file-input"
@@ -75,9 +92,9 @@ const Publish = ({ token }) => {
                   id="file"
                   multiple={true}
                   onChange={(event) => {
-                    setPicture(event.target.files[0]);
                     const picTab = Object.values(event.target.files);
-                    setPictures(picTab);
+                    setPicture(picTab[0]);
+                    setPictures(picTab.slice(1));
                     // const reader = new FileReader();
                     // reader.onload = () => {
                     //   if (reader.readyState === 2) {
@@ -87,14 +104,27 @@ const Publish = ({ token }) => {
                     // reader.readAsDataURL(event.target.files[0]);
                   }}
                 />
+                <div className="display-pictures-to-upload">
+                  {picture ? (
+                    <img
+                      src={URL.createObjectURL(picture)}
+                      alt="product"
+                      className="publish-pic-preview"
+                    />
+                  ) : null}
+                  {pictures &&
+                    pictures.map((picture, index) => {
+                      return (
+                        <img
+                          src={URL.createObjectURL(picture)}
+                          key={index}
+                          alt={`Item ${index}`}
+                          className="publish-pic-preview"
+                        />
+                      );
+                    })}
+                </div>
                 {/* <img src={preview} alt="" /> */}
-                {picture ? (
-                  <img
-                    src={URL.createObjectURL(picture)}
-                    alt="product"
-                    className="publish-pic-preview"
-                  />
-                ) : null}
               </div>
             </div>
             <div className="title-and-description section-div">
@@ -213,24 +243,54 @@ const Publish = ({ token }) => {
               </div>
             </div>
             <div className="btn-container">
-              <button type="submit" className="submit-btn">
+              {message && message}
+              <button
+                type="submit"
+                disabled={
+                  loading ||
+                  !picture ||
+                  !title ||
+                  !description ||
+                  !brand ||
+                  !size ||
+                  !color ||
+                  !condition ||
+                  !city ||
+                  !price
+                    ? true
+                    : false
+                }
+                className={
+                  loading ||
+                  !picture ||
+                  !title ||
+                  !description ||
+                  !brand ||
+                  !size ||
+                  !color ||
+                  !condition ||
+                  !city ||
+                  !price
+                    ? "submit-btn-disabled"
+                    : "submit-btn"
+                }
+              >
                 Ajouter
               </button>
             </div>
           </form>
-          {data && (
-            <>
-              <img
-                src={data.product_image.secure_url}
-                alt="product"
-                className="submitted-picture"
-              />{" "}
-              <span className="submitted-message">
-                Votre offre a bien été enregistrée
-              </span>{" "}
-            </>
-          )}
         </div>
+        {loading && (
+          <div className="loader-div">
+            <RotatingLines
+              strokeColor="grey"
+              strokeWidth="5"
+              animationDuration="0.75"
+              width="96"
+              visible={true}
+            />
+          </div>
+        )}
       </main>
     );
   }
